@@ -1,10 +1,11 @@
-// import DetailsPage from "./components/DetailsPage";
-import ViewDetailsPage from "./components/ViewDetailsPage";
+import DetailsPage from "./components/DetailsPage";
+import Slider from "./components/Slider";
 
 function App() {
   return (
    <>
-    <ViewDetailsPage />
+    <DetailsPage />
+    {/* <Slider /> */}
    </>
   );
 }

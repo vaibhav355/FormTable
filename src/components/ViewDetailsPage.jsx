@@ -2,6 +2,18 @@ import { Paper } from "@mui/material";
 import styled from "styled-components";
 import React from "react";
 
+const PaperContainer = styled(Paper)`
+  padding-top: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 20px;
+
+  /* ################# */
+  border-radius: 25px !important;
+  width: 96%;
+  margin-top: 5%;
+  display: ${props=>props.view?"block":"none"};
+`;
 const MainContainer = styled.div`
   display: flex;
 `;
@@ -14,16 +26,6 @@ const SecondContainer = styled.div`
   flex: 1;
 `;
 
-const PaperContainer = styled(Paper)`
-  padding-top: 20px;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-bottom: 20px;
-
-  /* ################# */
-  border-radius: 25px !important;
-  width: 82%;
-`;
 
 const Heading = styled.span`
   font-weight: bold;
@@ -63,26 +65,21 @@ const DescContainer = styled.div`
 // ############################
 // to Delete
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10%;
-`;
+// const Container = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 10%;
+// `;
 
-const ViewDetailsPage = () => {
+const ViewDetailsPage = ({view, detailsValue}) => {
   return (
-    <Container>
-      <PaperContainer>
+    
+      <PaperContainer view={view}>
         <DescContainer>
           <MainHeading>Description</MainHeading>
           <Desc>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-            impedit ratione provident?Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Maiores facilis nihil laboriosam Lorem ipsum dolor
-            sit amet, consectetur adipisicing elit. Minima et vero
-            exercitationem assumenda? Ipsam, eos porro. Quisquam rerum debitis,
-            ut neque quos distinctio.
+            {detailsValue?.company?.catchPhrase}, {detailsValue?.company?.bs}
           </Desc>
         </DescContainer>
 
@@ -90,49 +87,49 @@ const ViewDetailsPage = () => {
           <FirstContainer>
             <SingleInfo>
               <Heading>Contact Person</Heading>
-              <Info>Imran Dola</Info>
+              <Info>{detailsValue.name}</Info>
             </SingleInfo>
 
             <SingleInfo>
               <Heading>Designation</Heading>
-              <Info>Proprietor</Info>
+              <Info>{detailsValue.company.name}</Info>
             </SingleInfo>
 
             <SingleInfo>
               <Heading>Emails</Heading>
-              <Info>hello@gmail.com</Info>
+              <Info>{detailsValue.email}</Info>
             </SingleInfo>
 
             <SingleInfo>
               <Heading>Phones</Heading>
-              <Info>986759847</Info>
+              <Info>{detailsValue.phone}</Info>
             </SingleInfo>
           </FirstContainer>
 
           <SecondContainer>
             <SingleInfo>
               <Heading>Address</Heading>
-              <Info>15 kasmani Shopping Centre Unn Surat Gujarat</Info>
+              <Info>{detailsValue.address.street}, {detailsValue.address.suite}, {detailsValue.address.city}, {detailsValue.address.zipcode}</Info>
             </SingleInfo>
 
             <SingleInfo>
               <Heading>City</Heading>
-              <Info>Surat</Info>
+              <Info>{detailsValue.address.street}</Info>
             </SingleInfo>
 
             <SingleInfo>
               <Heading>State</Heading>
-              <Info>Gujarat</Info>
+              <Info>{detailsValue.address.city}</Info>
             </SingleInfo>
 
             <SingleInfo>
               <Heading>Country</Heading>
-              <Info>India</Info>
+              <Info>{detailsValue.address.city}</Info>
             </SingleInfo>
           </SecondContainer>
         </MainContainer>
       </PaperContainer>
-    </Container>
+    
   );
 };
 
